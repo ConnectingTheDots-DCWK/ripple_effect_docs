@@ -27,21 +27,21 @@ const U = 16;
 
 <a href={siteTitleHref} class="site-title sl-flex">
 	<svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-		{
-			RINGS.map((ring) => (
-				<circle
-					cx={U}
-					cy={U}
-					r={U * ring.r}
-					stroke="currentColor"
-					stroke-opacity={ring.alpha}
-					stroke-width={U * ring.width}
-				/>
-			))
-		}
+		{RINGS.map((ring) => (
+			<circle
+				cx={U}
+				cy={U}
+				r={U * ring.r}
+				stroke="currentColor"
+				stroke-opacity={ring.alpha}
+				stroke-width={U * ring.width}
+			/>
+		))}
 		<circle cx={U} cy={U} r={U * 0.17} fill="currentColor" />
 	</svg>
-	<span class="wordmark" translate="no">Ripple <span class="tail">Effect</span></span>
+	<span class="wordmark" translate="no">
+		Ripple <span class="tail">Effect</span>
+	</span>
 </a>
 
 <style>

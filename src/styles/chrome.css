@@ -280,12 +280,7 @@
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		background-image: linear-gradient(
-			110deg,
-			transparent 40%,
-			var(--glint) 50%,
-			transparent 60%
-		);
+		background-image: linear-gradient(110deg, transparent 40%, var(--glint) 50%, transparent 60%);
 		background-size: 250% 100%;
 		background-repeat: no-repeat;
 		animation: glint 4s linear infinite;

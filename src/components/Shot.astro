@@ -26,9 +26,9 @@ import { Image } from 'astro:assets';
 import { shots, type ShotName } from '../shots';
 
 interface Props {
-  name: ShotName;
-  /** Rendered under the frame. Optional; the alt text is always there. */
-  caption?: string;
+	name: ShotName;
+	/** Rendered under the frame. Optional; the alt text is always there. */
+	caption?: string;
 }
 
 const { name, caption } = Astro.props;
@@ -41,8 +41,8 @@ if (!shot) throw new Error(`<Shot name="${name}">: no such shot in src/shots.ts`
 // than a map of loaders, and so a missing file is a missing key rather than
 // a failed import somewhere downstream.
 const files = import.meta.glob<ImageMetadata>('/src/assets/screenshots/*.png', {
-  eager: true,
-  import: 'default',
+	eager: true,
+	import: 'default',
 });
 const dark = files[`/src/assets/screenshots/${shot.slug}-dark.png`];
 const light = files[`/src/assets/screenshots/${shot.slug}-light.png`];
@@ -60,28 +60,28 @@ const image = 'block h-auto w-full';
 ---
 
 <figure class="not-content my-6">
-  {
-    !dark && !light ? (
-      <div
-        class={`${frame} flex aspect-16/10 flex-col items-center justify-center gap-3 border-dashed p-8 text-center`}
-      >
-        <p class="font-mono text-xs text-primary">screenshots/{shot.slug}-dark.png</p>
-        <p class="max-w-md text-sm text-muted-foreground">{shot.brief}</p>
-      </div>
-    ) : dark && light ? (
-      <>
-        <div class={`${frame} dark:sl-hidden`}>
-          <Image src={light} alt={shot.alt} sizes={sizes} class={image} />
-        </div>
-        <div class={`${frame} light:sl-hidden`}>
-          <Image src={dark} alt={shot.alt} sizes={sizes} class={image} />
-        </div>
-      </>
-    ) : (
-      <div class={frame}>
-        <Image src={(dark ?? light)!} alt={shot.alt} sizes={sizes} class={image} />
-      </div>
-    )
-  }
-  {caption && <figcaption class="mt-2 text-center text-sm text-muted-foreground">{caption}</figcaption>}
+	{!dark && !light ? (
+		<div
+			class={`${frame} flex aspect-16/10 flex-col items-center justify-center gap-3 border-dashed p-8 text-center`}
+		>
+			<p class="font-mono text-xs text-primary">screenshots/{shot.slug}-dark.png</p>
+			<p class="max-w-md text-sm text-muted-foreground">{shot.brief}</p>
+		</div>
+	) : dark && light ? (
+		<>
+			<div class={`${frame} dark:sl-hidden`}>
+				<Image src={light} alt={shot.alt} sizes={sizes} class={image} />
+			</div>
+			<div class={`${frame} light:sl-hidden`}>
+				<Image src={dark} alt={shot.alt} sizes={sizes} class={image} />
+			</div>
+		</>
+	) : (
+		<div class={frame}>
+			<Image src={(dark ?? light)!} alt={shot.alt} sizes={sizes} class={image} />
+		</div>
+	)}
+	{caption && (
+		<figcaption class="mt-2 text-center text-sm text-muted-foreground">{caption}</figcaption>
+	)}
 </figure>

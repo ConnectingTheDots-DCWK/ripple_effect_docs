@@ -63,8 +63,9 @@ export default defineConfig({
 			// two anchors. `llms.txt` is a page of this site like any other and
 			// belongs beside the links to the rest of it.
 			editLink: {
-        		baseUrl: 'https://github.com/ConnectingTheDots-DCWK/ripple_effect_website/edit/main/docs-site/',
-      		},
+				baseUrl:
+					'https://github.com/ConnectingTheDots-DCWK/ripple_effect_website/edit/main/docs-site/',
+			},
 			social: [
 				{
 					icon: 'download',
@@ -160,7 +161,7 @@ export default defineConfig({
 							'component attribute is read as `component("X")["attr"]` and ' +
 							'never as an attribute.',
 						'- A compiled campaign is played outside the app through the ' +
-							'engine\'s bindings for JavaScript/TypeScript, C/C++, C# and ' +
+							"engine's bindings for JavaScript/TypeScript, C/C++, C# and " +
 							'Dart. They share one API: a campaign, a session whose verbs ' +
 							'each return an ordered list of effects (the turn last), and ' +
 							'an optional player loop.',
@@ -240,7 +241,11 @@ export default defineConfig({
 				// its brackets and its test lines wrong. The grammar is ours,
 				// small, and mirrors the app's own Weir highlighter.
 				shiki: {
-					langs: [JSON.parse(readFileSync(new URL('./src/weir.tmLanguage.json', import.meta.url), 'utf8'))],
+					langs: [
+						JSON.parse(
+							readFileSync(new URL('./src/weir.tmLanguage.json', import.meta.url), 'utf8'),
+						),
+					],
 				},
 				styleOverrides: {
 					codeBackground: 'var(--card)',
@@ -288,153 +293,276 @@ export default defineConfig({
 			// shipped the first time. Python is the one real subdirectory, because
 			// its slugs predate this and the app links them.
 			sidebar: [
-				{ label: 'Start here', translations: { it: 'Inizia qui' }, items: [{ slug: 'start-here/what-ripple-effect-is' }] },
-				{ label: 'Tutorials', translations: { it: 'Tutorial' }, items: [{ slug: 'tutorials' }, { slug: 'tutorials/your-first-story' }] },
 				{
-					label: 'How-to guides', translations: { it: 'Guide pratiche' },
+					label: 'Start here',
+					translations: { it: 'Inizia qui' },
+					items: [{ slug: 'start-here/what-ripple-effect-is' }],
+				},
+				{
+					label: 'Tutorials',
+					translations: { it: 'Tutorial' },
+					items: [{ slug: 'tutorials' }, { slug: 'tutorials/your-first-story' }],
+				},
+				{
+					label: 'How-to guides',
+					translations: { it: 'Guide pratiche' },
 					items: [
-						{ label: 'Getting set up', translations: { it: 'Per iniziare' }, collapsed: false, items: [
-							{ slug: 'how-to/install-the-app' },
-							{ slug: 'how-to/connect-an-mcp-client' },
-							{ slug: 'how-to/report-a-bug' },
-						] },
-						{ label: 'Projects and files', translations: { it: 'Progetti e file' }, collapsed: false, items: [
-							{ slug: 'how-to/create-or-import-a-project' },
-							{ slug: 'how-to/find-and-replace-in-project' },
-							{ slug: 'how-to/arrange-the-workspace' },
-							{ slug: 'how-to/keep-a-history-and-back-up' },
-							{ slug: 'how-to/change-app-language-contrast-and-colour' },
-						] },
-						{ label: 'Boards', translations: { it: 'Lavagne' }, collapsed: false, items: [
-							{ slug: 'how-to/work-on-the-canvas' },
-							{ slug: 'how-to/order-jobs-before-a-passage' },
-							{ slug: 'how-to/make-a-macro' },
-						] },
-						{ label: 'Passages and languages', translations: { it: 'Passaggi e lingue' }, collapsed: false, items: [
-							{ slug: 'how-to/write-a-passage' },
-							{ slug: 'how-to/limit-a-choice' },
-							{ slug: 'how-to/time-a-choice' },
-							{ slug: 'how-to/manage-languages' },
-							{ slug: 'how-to/check-spelling-and-grammar' },
-							{ slug: 'how-to/dictate-a-passage' },
-							{ slug: 'how-to/write-a-style-rule' },
-						] },
-						{ label: 'Data and state', translations: { it: 'Dati e stato' }, collapsed: false, items: [
-							{ slug: 'how-to/use-components-and-entities' },
-							{ slug: 'how-to/declare-console-variables' },
-							{ slug: 'how-to/add-a-state-machine' },
-						] },
-						{ label: 'Sound', translations: { it: 'Suono' }, collapsed: false, items: [
-							{ slug: 'how-to/add-sound-to-a-story' },
-						] },
-						{ label: 'Python', translations: { it: 'Python' }, collapsed: false, items: [
-							{ slug: 'how-to/script-a-passage' },
-							{ slug: 'how-to/turn-python-off' },
-							{ slug: 'how-to/use-entities-from-python' },
-						] },
-						{ label: 'Playing and tracing', translations: { it: 'Riproduzione e tracciamento' }, collapsed: false, items: [
-							{ slug: 'how-to/play-a-campaign' },
-							{ slug: 'how-to/save-and-resume-a-campaign' },
-							{ slug: 'how-to/trace-a-route' },
-						] },
-						{ label: 'Exporting', translations: { it: 'Esportazione' }, collapsed: false, items: [
-							{ slug: 'how-to/export-a-project-or-campaign' },
-							{ slug: 'how-to/export-for-a-player-without-python' },
-						] },
-						{ label: 'Host callbacks', translations: { it: 'Callback dell\'host' }, collapsed: false, items: [
-							{ slug: 'how-to/declare-a-host-callback' },
-						] },
-						{ label: 'Embedding the engine', translations: { it: 'Integrare il motore' }, collapsed: false, items: [
-							{ slug: 'how-to/play-a-campaign-in-your-program' },
-						] },
+						{
+							label: 'Getting set up',
+							translations: { it: 'Per iniziare' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/install-the-app' },
+								{ slug: 'how-to/connect-an-mcp-client' },
+								{ slug: 'how-to/report-a-bug' },
+							],
+						},
+						{
+							label: 'Projects and files',
+							translations: { it: 'Progetti e file' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/create-or-import-a-project' },
+								{ slug: 'how-to/find-and-replace-in-project' },
+								{ slug: 'how-to/arrange-the-workspace' },
+								{ slug: 'how-to/keep-a-history-and-back-up' },
+								{ slug: 'how-to/change-app-language-contrast-and-colour' },
+							],
+						},
+						{
+							label: 'Boards',
+							translations: { it: 'Lavagne' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/work-on-the-canvas' },
+								{ slug: 'how-to/order-jobs-before-a-passage' },
+								{ slug: 'how-to/make-a-macro' },
+							],
+						},
+						{
+							label: 'Passages and languages',
+							translations: { it: 'Passaggi e lingue' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/write-a-passage' },
+								{ slug: 'how-to/limit-a-choice' },
+								{ slug: 'how-to/time-a-choice' },
+								{ slug: 'how-to/manage-languages' },
+								{ slug: 'how-to/check-spelling-and-grammar' },
+								{ slug: 'how-to/dictate-a-passage' },
+								{ slug: 'how-to/write-a-style-rule' },
+							],
+						},
+						{
+							label: 'Data and state',
+							translations: { it: 'Dati e stato' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/use-components-and-entities' },
+								{ slug: 'how-to/declare-console-variables' },
+								{ slug: 'how-to/add-a-state-machine' },
+							],
+						},
+						{
+							label: 'Sound',
+							translations: { it: 'Suono' },
+							collapsed: false,
+							items: [{ slug: 'how-to/add-sound-to-a-story' }],
+						},
+						{
+							label: 'Python',
+							translations: { it: 'Python' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/script-a-passage' },
+								{ slug: 'how-to/turn-python-off' },
+								{ slug: 'how-to/use-entities-from-python' },
+							],
+						},
+						{
+							label: 'Playing and tracing',
+							translations: { it: 'Riproduzione e tracciamento' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/play-a-campaign' },
+								{ slug: 'how-to/save-and-resume-a-campaign' },
+								{ slug: 'how-to/trace-a-route' },
+							],
+						},
+						{
+							label: 'Exporting',
+							translations: { it: 'Esportazione' },
+							collapsed: false,
+							items: [
+								{ slug: 'how-to/export-a-project-or-campaign' },
+								{ slug: 'how-to/export-for-a-player-without-python' },
+							],
+						},
+						{
+							label: 'Host callbacks',
+							translations: { it: "Callback dell'host" },
+							collapsed: false,
+							items: [{ slug: 'how-to/declare-a-host-callback' }],
+						},
+						{
+							label: 'Embedding the engine',
+							translations: { it: 'Integrare il motore' },
+							collapsed: false,
+							items: [{ slug: 'how-to/play-a-campaign-in-your-program' }],
+						},
 					],
 				},
 				{
-					label: 'Reference', translations: { it: 'Riferimento' },
+					label: 'Reference',
+					translations: { it: 'Riferimento' },
 					items: [
-						{ label: 'Nodes', translations: { it: 'Nodi' }, collapsed: false, items: [
-							{ slug: 'reference/nodes' },
-							{ slug: 'reference/node-families' },
-							{ slug: 'reference/units' },
-							{ slug: 'reference/canvas-rules' },
-						] },
-						{ label: 'MCP tools', translations: { it: 'Strumenti MCP' }, collapsed: false, items: [
-							{ slug: 'reference/mcp-tools' },
-							{ slug: 'reference/mcp-permissions' },
-						] },
-						{ label: 'Diagnostics', translations: { it: 'Diagnostica' }, collapsed: false, items: [
-							{ slug: 'reference/diagnostics' },
-						] },
-						{ label: 'Python', translations: { it: 'Python' }, collapsed: false, items: [
-							{ slug: 'reference/python' },
-							{ slug: 'reference/python/components-and-entities' },
-							{ slug: 'reference/python/console-variables' },
-							{ slug: 'reference/python/sounds' },
-							{ slug: 'reference/python/the-world' },
-							{ slug: 'reference/python/sandbox' },
-						] },
-						{ label: 'Project files and formats', translations: { it: 'File e formati del progetto' }, collapsed: false, items: [
-							{ slug: 'reference/project-files' },
-							{ slug: 'reference/console-variable-declarations' },
-							{ slug: 'reference/state-machine-file' },
-							{ slug: 'reference/soundscape-file' },
-							{ slug: 'reference/host-callbacks' },
-							{ slug: 'reference/export-options' },
-							{ slug: 'reference/passages' },
-						] },
-						{ label: 'The application', translations: { it: 'L\'applicazione' }, collapsed: false, items: [
-							{ slug: 'reference/workspace-window' },
-							{ slug: 'reference/campaign-window' },
-							{ slug: 'reference/settings' },
-							{ slug: 'reference/version-control' },
-							{ slug: 'reference/session-log' },
-							{ slug: 'reference/installers' },
-						] },
-						{ label: 'Embedding the engine', translations: { it: 'Integrare il motore' }, collapsed: false, items: [
-							{ slug: 'reference/engine-targets' },
-							{ slug: 'reference/binding-javascript' },
-							{ slug: 'reference/binding-c-cpp' },
-							{ slug: 'reference/binding-csharp' },
-							{ slug: 'reference/binding-dart' },
-						] },
+						{
+							label: 'Nodes',
+							translations: { it: 'Nodi' },
+							collapsed: false,
+							items: [
+								{ slug: 'reference/nodes' },
+								{ slug: 'reference/node-families' },
+								{ slug: 'reference/units' },
+								{ slug: 'reference/canvas-rules' },
+							],
+						},
+						{
+							label: 'MCP tools',
+							translations: { it: 'Strumenti MCP' },
+							collapsed: false,
+							items: [{ slug: 'reference/mcp-tools' }, { slug: 'reference/mcp-permissions' }],
+						},
+						{
+							label: 'Diagnostics',
+							translations: { it: 'Diagnostica' },
+							collapsed: false,
+							items: [{ slug: 'reference/diagnostics' }],
+						},
+						{
+							label: 'Python',
+							translations: { it: 'Python' },
+							collapsed: false,
+							items: [
+								{ slug: 'reference/python' },
+								{ slug: 'reference/python/components-and-entities' },
+								{ slug: 'reference/python/console-variables' },
+								{ slug: 'reference/python/sounds' },
+								{ slug: 'reference/python/the-world' },
+								{ slug: 'reference/python/sandbox' },
+							],
+						},
+						{
+							label: 'Project files and formats',
+							translations: { it: 'File e formati del progetto' },
+							collapsed: false,
+							items: [
+								{ slug: 'reference/project-files' },
+								{ slug: 'reference/console-variable-declarations' },
+								{ slug: 'reference/state-machine-file' },
+								{ slug: 'reference/soundscape-file' },
+								{ slug: 'reference/host-callbacks' },
+								{ slug: 'reference/export-options' },
+								{ slug: 'reference/passages' },
+							],
+						},
+						{
+							label: 'The application',
+							translations: { it: "L'applicazione" },
+							collapsed: false,
+							items: [
+								{ slug: 'reference/workspace-window' },
+								{ slug: 'reference/campaign-window' },
+								{ slug: 'reference/settings' },
+								{ slug: 'reference/version-control' },
+								{ slug: 'reference/session-log' },
+								{ slug: 'reference/installers' },
+							],
+						},
+						{
+							label: 'Embedding the engine',
+							translations: { it: 'Integrare il motore' },
+							collapsed: false,
+							items: [
+								{ slug: 'reference/engine-targets' },
+								{ slug: 'reference/binding-javascript' },
+								{ slug: 'reference/binding-c-cpp' },
+								{ slug: 'reference/binding-csharp' },
+								{ slug: 'reference/binding-dart' },
+							],
+						},
 					],
 				},
 				{
-					label: 'Explanation', translations: { it: 'Spiegazioni' },
+					label: 'Explanation',
+					translations: { it: 'Spiegazioni' },
 					items: [
-						{ label: 'Boards and running a story', translations: { it: 'Lavagne e svolgimento della storia' }, collapsed: false, items: [
-							{ slug: 'explanation/boards-nodes-and-macros' },
-							{ slug: 'explanation/how-a-story-runs' },
-							{ slug: 'explanation/reading-a-story-back' },
-							{ slug: 'explanation/the-preview-is-the-shipped-story' },
-						] },
-						{ label: 'Passages and data', translations: { it: 'Passaggi e dati' }, collapsed: false, items: [
-							{ slug: 'explanation/passages-and-translations' },
-							{ slug: 'explanation/components-and-entities' },
-							{ slug: 'explanation/console-variables' },
-							{ slug: 'explanation/state-machines' },
-							{ slug: 'explanation/python-in-a-story' },
-							{ slug: 'explanation/soundscapes-and-sounds' },
-						] },
-						{ label: 'Exporting and host integration', translations: { it: 'Esportazione e integrazione con l\'host' }, collapsed: false, items: [
-							{ slug: 'explanation/what-an-export-is' },
-							{ slug: 'explanation/host-callbacks' },
-							{ slug: 'explanation/working-with-an-assistant' },
-						] },
-						{ label: 'Embedding the engine', translations: { it: 'Integrare il motore' }, collapsed: false, items: [
-							{ slug: 'explanation/embedding-the-engine' },
-							{ slug: 'explanation/how-the-engine-ships' },
-						] },
-						{ label: 'The workspace, versions and the app', translations: { it: 'Lo spazio di lavoro, le versioni e l\'app' }, collapsed: false, items: [
-							{ slug: 'explanation/projects-are-folders' },
-							{ slug: 'explanation/history-and-sharing' },
-							{ slug: 'explanation/updates-logs-and-privacy' },
-							{ slug: 'explanation/unsigned-installers' },
-							{ slug: 'explanation/accessibility-limits' },
-						] },
+						{
+							label: 'Boards and running a story',
+							translations: { it: 'Lavagne e svolgimento della storia' },
+							collapsed: false,
+							items: [
+								{ slug: 'explanation/boards-nodes-and-macros' },
+								{ slug: 'explanation/how-a-story-runs' },
+								{ slug: 'explanation/reading-a-story-back' },
+								{ slug: 'explanation/the-preview-is-the-shipped-story' },
+							],
+						},
+						{
+							label: 'Passages and data',
+							translations: { it: 'Passaggi e dati' },
+							collapsed: false,
+							items: [
+								{ slug: 'explanation/passages-and-translations' },
+								{ slug: 'explanation/components-and-entities' },
+								{ slug: 'explanation/console-variables' },
+								{ slug: 'explanation/state-machines' },
+								{ slug: 'explanation/python-in-a-story' },
+								{ slug: 'explanation/soundscapes-and-sounds' },
+							],
+						},
+						{
+							label: 'Exporting and host integration',
+							translations: { it: "Esportazione e integrazione con l'host" },
+							collapsed: false,
+							items: [
+								{ slug: 'explanation/what-an-export-is' },
+								{ slug: 'explanation/host-callbacks' },
+								{ slug: 'explanation/working-with-an-assistant' },
+							],
+						},
+						{
+							label: 'Embedding the engine',
+							translations: { it: 'Integrare il motore' },
+							collapsed: false,
+							items: [
+								{ slug: 'explanation/embedding-the-engine' },
+								{ slug: 'explanation/how-the-engine-ships' },
+							],
+						},
+						{
+							label: 'The workspace, versions and the app',
+							translations: { it: "Lo spazio di lavoro, le versioni e l'app" },
+							collapsed: false,
+							items: [
+								{ slug: 'explanation/projects-are-folders' },
+								{ slug: 'explanation/history-and-sharing' },
+								{ slug: 'explanation/updates-logs-and-privacy' },
+								{ slug: 'explanation/unsigned-installers' },
+								{ slug: 'explanation/accessibility-limits' },
+							],
+						},
 					],
 				},
-				{ label: 'About', translations: { it: 'Informazioni' }, items: [{ slug: 'about/licensing' }, { slug: 'about/open-source' }, { slug: 'about/what-the-app-sends' }] },
+				{
+					label: 'About',
+					translations: { it: 'Informazioni' },
+					items: [
+						{ slug: 'about/licensing' },
+						{ slug: 'about/open-source' },
+						{ slug: 'about/what-the-app-sends' },
+					],
+				},
 			],
 		}),
 	],

@@ -49,8 +49,7 @@ import { Icon } from '@astrojs/starlight/components';
 		constructor() {
 			super();
 			this.querySelector('button')?.addEventListener('click', () => {
-				const next =
-					document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+				const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
 				document.documentElement.dataset.theme = next;
 				try {
 					localStorage.setItem('starlight-theme', next);

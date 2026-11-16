@@ -1,23 +1,23 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": {
-    "deploymentEnabled": false
-  },
-  "redirects": [
-    {
-      "source": "/:path((?!it/|it$|_astro/|pagefind/|overviews/|setup/)(?!.*\\.[A-Za-z0-9]+$).*)",
-      "has": [
-        { "type": "header", "key": "x-vercel-ip-country", "value": { "re": "^(IT|SM|VA)$" } }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "referer",
-          "value": { "re": "^https://(docs\\.ripplefx\\.app|[^/]+\\.vercel\\.app)/" }
-        }
-      ],
-      "destination": "/it/:path",
-      "permanent": false
-    }
-  ]
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"git": {
+		"deploymentEnabled": false
+	},
+	"redirects": [
+		{
+			"source": "/:path((?!it/|it$|_astro/|pagefind/|overviews/|setup/)(?!.*\\.[A-Za-z0-9]+$).*)",
+			"has": [
+				{ "type": "header", "key": "x-vercel-ip-country", "value": { "re": "^(IT|SM|VA)$" } }
+			],
+			"missing": [
+				{
+					"type": "header",
+					"key": "referer",
+					"value": { "re": "^https://(docs\\.ripplefx\\.app|[^/]+\\.vercel\\.app)/" }
+				}
+			],
+			"destination": "/it/:path",
+			"permanent": false
+		}
+	]
 }
