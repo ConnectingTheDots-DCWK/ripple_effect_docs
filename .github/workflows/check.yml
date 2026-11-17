@@ -23,21 +23,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: false
       - name: List LFS objects
         # hashFiles reads only the workspace; the list is untracked and used only for the key.
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-ids
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: .git/lfs
           key: lfs-${{ hashFiles('.lfs-ids') }}
           restore-keys: lfs-
       - run: git lfs pull
 
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: package.json
           cache: pnpm
