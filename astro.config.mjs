@@ -63,8 +63,7 @@ export default defineConfig({
 			// two anchors. `llms.txt` is a page of this site like any other and
 			// belongs beside the links to the rest of it.
 			editLink: {
-				baseUrl:
-					'https://github.com/ConnectingTheDots-DCWK/ripple_effect_website/edit/main/docs-site/',
+				baseUrl: 'https://github.com/ConnectingTheDots-DCWK/ripple_effect_docs/edit/main/',
 			},
 			social: [
 				{

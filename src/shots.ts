@@ -16,7 +16,7 @@
  *
  * Several slots are the landing page's shots exactly — the brief says so. For
  * those, copy the file from `../public/screenshots/` rather than capturing it
- * twice; the two sites share a checkout and nothing else, so it is a copy.
+ * twice; the two sites are separate repositories, so it is a copy.
  */
 /**
  * Deliberately no `SHOT_WIDTH`/`SHOT_HEIGHT` here, though the landing page's

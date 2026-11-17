@@ -1,0 +1,59 @@
+# The maintainers' git hooks — optional for a contributor, since CI runs the
+# same checks on every pull request.
+#
+#   pre-commit install --hook-type pre-commit --hook-type pre-push
+#
+# A commit pays for what takes seconds: hygiene, the secret scan, the
+# formatter in check mode and astro check. A push pays for the build.
+#
+# TruffleHog over what is staged, failing on any finding; CI's
+# `.github/workflows/secrets.yml` runs the same scan over everything pushed.
+# The binary is per machine: https://github.com/trufflesecurity/trufflehog/releases
+# or `brew install trufflehog`.
+
+default_stages: [pre-commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Markdown keeps trailing spaces, because two of them are a hard line break.
+      - id: trailing-whitespace
+        exclude: pnpm-lock\.yaml$|\.(mdx?|svg)$
+      - id: end-of-file-fixer
+        exclude: pnpm-lock\.yaml$|\.svg$
+      - id: check-yaml
+      - id: check-json
+        exclude: (^|/)tsconfig\.json$
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: mixed-line-ending
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+
+  - repo: local
+    hooks:
+      - id: trufflehog
+        name: secret scan
+        entry: bash tool/hook.sh bash tool/trufflehog/scan.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: prettier
+        name: prettier --check
+        entry: bash tool/hook.sh pnpm exec prettier --check --ignore-unknown
+        language: system
+        types_or: [astro, ts, javascript, css, json, yaml]
+      - id: astro-check
+        name: astro check
+        entry: bash tool/hook.sh pnpm --silent check
+        language: system
+        pass_filenames: false
+        files: ^(src/|astro\.config|tsconfig\.json|package\.json)
+      - id: build
+        name: build
+        entry: bash tool/hook.sh pnpm --silent build
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

@@ -3,24 +3,39 @@
 The documentation site. Astro 7 + Starlight 0.42, TypeScript, pnpm, deployed on
 Vercel at **docs.ripplefx.app**.
 
-It lives in the landing page's repository but is not part of the landing page:
-it is a second Vercel project whose **Root Directory is `docs-site`**. The two
-share a checkout and nothing else — no dependency, no build, no lockfile.
+**Its own repository, and public**, so that anybody can propose a change to a
+page: Starlight's *Edit page* link opens the file here on GitHub. It is also a
+submodule of the website's repository, which is **private**, at `docs-site/`,
+and that one is a submodule of the app's, so the app's tests read these pages
+at `website/docs-site/`. It was split out of the website's repository on
+2026-11-17 with its history; a `#NN` in an older commit message names a pull
+request there, and is written out in full so that GitHub does not link it to
+one here.
 
-## Why it is in this repository at all
+**Paths starting `../` in this file and in `src/shots.ts` are the website
+repository's**, and resolve only in a checkout of this as its submodule. A
+contributor working from a plain clone of this repository has none of them and
+needs none of them to change a page: they are the maintainer's notes on what
+has to stay consistent with the landing page.
 
-Because the thing it has to stay consistent with is here. The house style is
-transcribed in `../src/app/globals.css`, and `src/styles/tokens.css` is a
-transcription of that transcription; a change to either is a one-directory diff
-rather than a submodule bump. Splitting it into its own repository is still
-open if it outgrows that, and would cost a `git init` and a Vercel project.
+**Licences:** the prose and the pictures under `src/content/` and
+`src/assets/`, and `src/node-prose/`, are CC BY 4.0 (`LICENSE-docs`); the
+site's code is MIT (`LICENSE`). Neither covers the Ripple Effect name or mark.
+A contribution comes in under the same licence, under GitHub's terms of
+service, so there is no contributor agreement.
 
-**`pnpm-workspace.yaml` exists here for one reason: to stop pnpm walking up.**
-The landing page has a workspace root at `../pnpm-workspace.yaml`, and pnpm
-resolves to the *nearest* one. Without a file here, installing in this
-directory would install into that root — one lockfile for two projects that
-share no dependency, and a landing page build on Vercel that resolves this tree
-as well.
+## Why the house style is copied rather than shared
+
+The house style is transcribed in the landing page's `../src/app/globals.css`,
+and `src/styles/tokens.css` is a transcription of that transcription. A change
+to one is a change to the other by hand, in two repositories now; a shared
+package would be a third thing to publish for one file of tokens.
+
+**`pnpm-workspace.yaml` exists here to stop pnpm walking up.** Checked out as
+the website's submodule, this directory sits under the landing page's
+workspace root at `../pnpm-workspace.yaml`, and pnpm resolves to the *nearest*
+one. Without a file here, installing in this directory would install into that
+root — one lockfile for two projects that share no dependency.
 
 ## The stylesheet is the theme, and it is four files
 
@@ -439,10 +454,10 @@ changes or one is added, and commit the result on this side. It is on the
 app's release checklist, since a release is when cards have changed.
 
 Several slots are the landing page's shots exactly, and their briefs say so.
-Copy those from `../public/screenshots/` rather than capturing them twice —
-a copy, not a symlink, because the two sites share a checkout and nothing
-else, and Vercel builds this one from its own root directory. The capture
-protocol is the landing page's, `../docs/screenshots.md`.
+Copy those from the landing page's `../public/screenshots/` rather than
+capturing them twice — a copy, not a symlink, because the two are separate
+repositories. The capture protocol is the landing page's,
+`../docs/screenshots.md`.
 
 ## What is deliberately not here
 
@@ -455,4 +470,4 @@ protocol is the landing page's, `../docs/screenshots.md`.
 - **A link back to the landing page.** The navbar and footer over there point
   here — `siteConfig.links.docs`, one string — and the download icon in this
   header points at `ripplefx.app/download`. Nothing else crosses over; the two
-  sites share a checkout and a token block and that is all.
+  sites share a token block and that is all.
